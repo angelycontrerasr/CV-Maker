@@ -4,8 +4,8 @@ export default function OptionList({
                                         onSelect
                                     }) {
     return (
-        <section className="contact-list">
-            <ul>
+        <section >
+            <ul className="optionMenu">
                 {options.map(option =>
                     <li key={option.name}>
                         <button onClick={() => {

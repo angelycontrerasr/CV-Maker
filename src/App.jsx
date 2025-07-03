@@ -12,13 +12,13 @@ const options = [
 
 
 export default function OptionsMenu() {
-    const [to, setTo] = useState(options[0]);
+    const [category, setCategory] = useState(options[0]);
     return (
-        <div>
+        <div >
             <OptionList
                 options={options}
-                selectedOption={to}
-                onSelect={ option => setTo( option)}
+                selectedOption={category}
+                onSelect={ option => setCategory( option)}
             />
         </div>
     )

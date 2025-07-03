@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+.optionMenu {
+  display: flex;
+  flex-direction: row; /* Esto está bien */
+  font-size: 1.2rem;
+  list-style: none; /* 🔥 Evita los puntos de lista */
+  padding: 0;
+  margin: 0;
+  gap: 1rem; /* Espaciado entre botones */
+}
+
+.optionMenu li {
+  margin: 0;
+}
