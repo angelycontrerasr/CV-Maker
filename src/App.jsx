@@ -1,10 +1,17 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import './App.css'
+import './App.css';
 import WorkInput from "./components/WorkInput.jsx";
 import OptionsMenu from "./components/optionMenu.jsx";
-import {EducationInput} from "./components/EducationInput.jsx";
+import { EducationInput } from "./components/EducationInput.jsx";
 
+const options = [
+    { id: 0, name: 'Personal Info' },
+    { id: 1, name: 'Education' },
+    { id: 2, name: 'Experience' },
+    { id: 3, name: 'Leadership' },
+    { id: 4, name: "Skills and Interests" }
+];
 
 export default function App() {
     const [userWork, setUserWork] = useState([
@@ -18,9 +25,10 @@ export default function App() {
             desc: ''
         }
     ]);
+
     const [userEducation, setUserEducation] = useState([
         {
-            id:1,
+            id: 1,
             schoolName: '',
             degree: '',
             startDate: '',
@@ -28,14 +36,46 @@ export default function App() {
             location: '',
             edulevel: '',
         }
-    ])
-    const [selectedId, setSelectedId] = useState(1); // Puedes conectar esto a tu OptionsMenu si quieres después
+    ]);
+
+    const [selectedId, setSelectedId] = useState(1);
+    const [selectedCategory, setSelectedCategory] = useState(options[0]); // 👈
 
     return (
         <div>
-            <OptionsMenu />
-            <WorkInput userWork={userWork} setUserWork={setUserWork} id={selectedId} />
-            <EducationInput userEducation={userEducation} setUserEducation={setUserEducation} id={selectedId} />
+            <OptionsMenu
+                options={options}
+                selectedOption={selectedCategory}
+                onSelect={setSelectedCategory}
+            />
+
+            {selectedCategory.name === 'Education' && (
+                <EducationInput
+                    userEducation={userEducation}
+                    setUserEducation={setUserEducation}
+                    id={selectedId}
+                />
+            )}
+
+            {selectedCategory.name === 'Experience' && (
+                <WorkInput
+                    userWork={userWork}
+                    setUserWork={setUserWork}
+                    id={selectedId}
+                />
+            )}
+
+            {selectedCategory.name === 'Personal Info' && (
+                <p className="text-center">🧍 Personal Info Coming Soon...</p>
+            )}
+
+            {selectedCategory.name === 'Leadership' && (
+                <p className="text-center">👑 Leadership Input Coming Soon...</p>
+            )}
+
+            {selectedCategory.name === 'Skills and Interests' && (
+                <p className="text-center">🎯 Skills and Interests Coming Soon...</p>
+            )}
         </div>
     );
 }
