@@ -1,25 +1,29 @@
 import { useState } from 'react'
 
 import './App.css'
-import OptionList from "./components/ResumeInfoOptions.jsx";
-
-const options = [
-    {id: 0, name: 'Personal Info'},
-    {id: 1, name: 'Education'},
-    {id: 2, name: 'Experience'},
-    {id: 3, name: 'Leadership'},
-    {id: 4, name: "Skills and Interests"}];
+import WorkInput from "./components/WorkInput.jsx";
+import OptionsMenu from "./components/optionMenu.jsx";
 
 
-export default function OptionsMenu() {
-    const [category, setCategory] = useState(options[0]);
+export default function App() {
+    const [userWork, setUserWork] = useState([
+        {
+            id: 1,
+            companyName: '',
+            title: '',
+            startDate: '',
+            endDate: '',
+            location: '',
+            desc: ''
+        }
+    ]);
+
+    const [selectedId, setSelectedId] = useState(1); // Puedes conectar esto a tu OptionsMenu si quieres después
+
     return (
-        <div >
-            <OptionList
-                options={options}
-                selectedOption={category}
-                onSelect={ option => setCategory( option)}
-            />
+        <div>
+            <OptionsMenu />
+            <WorkInput userWork={userWork} setUserWork={setUserWork} id={selectedId} />
         </div>
-    )
+    );
 }
