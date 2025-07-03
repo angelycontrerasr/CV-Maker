@@ -1,5 +1,4 @@
 import { useState } from 'react';
-const fields
 export default function InfoForm() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -16,7 +15,6 @@ export default function InfoForm() {
 
     return (
         <>
-            <h2>Let’s check you in</h2>
             <label>
                 First name:{' '}
                 <input
@@ -32,7 +30,7 @@ export default function InfoForm() {
                 />
             </label>
             <p>
-                Your ticket will be issued to: <b>{fullName}</b>
+               <b>{fullName}</b>
             </p>
         </>
     );

@@ -4,7 +4,7 @@ import './App.css';
 import WorkInput from "./components/WorkInput.jsx";
 import OptionsMenu from "./components/optionMenu.jsx";
 import { EducationInput } from "./components/EducationInput.jsx";
-
+import PersonalInfoInput from "./components/PersonalInfoInput.jsx"
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -38,7 +38,7 @@ export default function App() {
         }
     ]);
 
-    const [selectedId, setSelectedId] = useState(1);
+    const [selectedId] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState(options[0]); // 👈
 
     return (
@@ -66,7 +66,7 @@ export default function App() {
             )}
 
             {selectedCategory.name === 'Personal Info' && (
-                <p className="text-center">🧍 Personal Info Coming Soon...</p>
+                <PersonalInfoInput />
             )}
 
             {selectedCategory.name === 'Leadership' && (
@@ -76,6 +76,7 @@ export default function App() {
             {selectedCategory.name === 'Skills and Interests' && (
                 <p className="text-center">🎯 Skills and Interests Coming Soon...</p>
             )}
+            <p></p>
         </div>
     );
 }
