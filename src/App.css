@@ -53,3 +53,7 @@
 .optionMenu li {
   margin: 0;
 }
+
+.mainDiv {
+  display: grid;
+}
