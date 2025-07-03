@@ -2,7 +2,15 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import OptionList from "./components/ResumeInfoOptions.jsx";
 
+const options = [
+    {id: 0, name: 'Personal Info'},
+    {id: 1, name: 'Education'},
+    {id: 2, name: 'Experience'},
+    {id: 3, name: 'Leadership'},
+    {id: 4, name: "Skills and Interests"}];
+/*
 function App() {
   const [count, setCount] = useState(0)
 
@@ -33,3 +41,18 @@ function App() {
 }
 
 export default App
+
+ */
+
+export default function Messenger() {
+    const [to, setTo] = useState(options[0]);
+    return (
+        <div>
+            <OptionList
+                options={options}
+                selectedContact={to}
+                onSelect={ option => setTo( option)}
+            />
+        </div>
+    )
+}
