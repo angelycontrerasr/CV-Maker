@@ -2,13 +2,14 @@ import {use, useState} from 'react';
 
 import './App.css';
 import WorkInput from "./components/WorkInput.jsx";
-import OptionsMenu from "./components/optionMenu.jsx";
+import OptionsMenu from "./components/OptionMenu.jsx";
 import { EducationInput } from "./components/EducationInput.jsx";
 import PersonalInfoInput from "./components/PersonalInfoInput.jsx"
 import DisplayEducationInput from "./components/DisplayEducationInput.jsx";
 import NewEducationButton from "./components/NewEducationButton.jsx";
 import DisplayPersonalInfoInput from "./components/DisplayPersonalInfoInput.jsx";
-import DisplayWorkInput from "./components/workInfoDisplay.jsx";
+import DisplayWorkInput from "./components/WorkInfoDisplay.jsx";
+import LeadershipInput from "./components/LeadershipInput.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -50,7 +51,17 @@ export default function App() {
     ]);
     const [selectedId] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState(options[0]); // 👈
-
+    const [userLeadership, setUserLeadership] = useState([
+        {
+            id: 1,
+            leadershipName: '',
+            title: '',
+            startDate: '',
+            endDate: '',
+            location: '',
+            desc: '',
+        }
+    ]);
     return (
         <div>
             <OptionsMenu
@@ -92,16 +103,18 @@ export default function App() {
             </div>
 
                 {selectedCategory.name === 'Leadership' && (
-                    <p className="text-center">👑 Leadership Input Coming Soon...</p>
+                    <LeadershipInput
+                    userLeadership={userLeadership}
+                    setUserLeadership={setUserLeadership}
+                    id={selectedId}/>
             )}
 
             {selectedCategory.name === 'Skills and Interests' && (
                 <p className="text-center">🎯 Skills and Interests Coming Soon...</p>
             )}
             </div>
-
-            <DisplayEducationInput education={userEducation} />
             <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
+            <DisplayEducationInput education={userEducation} />
             <DisplayWorkInput works={userWork} />
             </div>
     );
