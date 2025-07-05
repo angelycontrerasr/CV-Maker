@@ -10,6 +10,7 @@ import NewEducationButton from "./components/NewEducationButton.jsx";
 import DisplayPersonalInfoInput from "./components/DisplayPersonalInfoInput.jsx";
 import DisplayWorkInput from "./components/WorkInfoDisplay.jsx";
 import LeadershipInput from "./components/LeadershipInput.jsx";
+import DisplayLeadershipInput from "./components/DisplayLeadershipInput.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -116,6 +117,7 @@ export default function App() {
             <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
             <DisplayEducationInput education={userEducation} />
             <DisplayWorkInput works={userWork} />
+            <DisplayLeadershipInput leadership={userLeadership} />
             </div>
     );
 }
