@@ -49,7 +49,7 @@
   margin: 0;
 }
 
-.mainDiv {
+.inputDiv {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -62,7 +62,7 @@
 .NewButton {
   height: 5rem;
 }
-.mainDiv {
+.inputDiv {
   background-color: red;
 }
 
@@ -72,4 +72,8 @@
 
 .personalInfoInput {
   background-color: green;
+}
+
+.experienceInput {
+  background-color: yellow;
 }

@@ -8,6 +8,7 @@ import PersonalInfoInput from "./components/PersonalInfoInput.jsx"
 import DisplayEducationInput from "./components/DisplayEducationInput.jsx";
 import NewEducationButton from "./components/NewEducationButton.jsx";
 import DisplayPersonalInfoInput from "./components/DisplayPersonalInfoInput.jsx";
+import DisplayWorkInput from "./components/workInfoDisplay.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -57,7 +58,7 @@ export default function App() {
                 selectedOption={selectedCategory}
                 onSelect={setSelectedCategory}
             />
-            <div className="mainDiv">
+            <div className="inputDiv">
             {selectedCategory.name === 'Education' && (
                 <div className="eduInput">
                     {userEducation.map(entry => (
@@ -71,7 +72,7 @@ export default function App() {
                     <NewEducationButton userEducation={userEducation} setUserEducation={setUserEducation} />
                 </div>
             )}
-
+            <div className="experienceInput">
             {selectedCategory.name === 'Experience' && (
                 <WorkInput
                     userWork={userWork}
@@ -79,6 +80,7 @@ export default function App() {
                     id={selectedId}
                 />
             )}
+            </div>
             <div className="personalInfoInput">
             {selectedCategory.name === 'Personal Info' && (
                 <PersonalInfoInput
@@ -96,9 +98,11 @@ export default function App() {
             {selectedCategory.name === 'Skills and Interests' && (
                 <p className="text-center">🎯 Skills and Interests Coming Soon...</p>
             )}
+            </div>
+
             <DisplayEducationInput education={userEducation} />
             <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
+            <DisplayWorkInput works={userWork} />
             </div>
-        </div>
     );
 }

@@ -11,7 +11,7 @@ const workFields = [
 
 export default function WorkInput({ userWork, setUserWork, id }) {
     return (
-        <div className="workinput">
+        <div>
             <DynamicFormSection
                 items={userWork}
                 setItems={setUserWork}
