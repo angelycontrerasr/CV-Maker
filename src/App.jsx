@@ -11,6 +11,7 @@ import DisplayPersonalInfoInput from "./components/DisplayPersonalInfoInput.jsx"
 import DisplayWorkInput from "./components/WorkInfoDisplay.jsx";
 import LeadershipInput from "./components/LeadershipInput.jsx";
 import DisplayLeadershipInput from "./components/DisplayLeadershipInput.jsx";
+import SkillsInput from "./components/SkillsInput.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -49,6 +50,13 @@ export default function App() {
         personalName: '',
         personalSurname: '',
     }
+    ]);
+    const [userSkills, setUserSkills] = useState([
+        {
+            id: 1,
+            skillName: '',
+            skillDescription: '',
+        }
     ]);
     const [selectedId] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState(options[0]); // 👈
@@ -111,7 +119,11 @@ export default function App() {
             )}
 
             {selectedCategory.name === 'Skills and Interests' && (
-                <p className="text-center">🎯 Skills and Interests Coming Soon...</p>
+               <SkillsInput
+               userSkill={userSkills}
+               setUserSkill={setUserSkills}
+               id={selectedId}
+               />
             )}
             </div>
             <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
