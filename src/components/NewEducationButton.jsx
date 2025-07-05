@@ -15,7 +15,7 @@ export default function NewEducationButton({ userEducation, setUserEducation }) 
     };
 
     return (
-        <button onClick={handleClick}>
+        <button className="NewButton" onClick={handleClick}>
             ➕ New Education Section
         </button>
     );

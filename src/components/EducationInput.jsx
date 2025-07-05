@@ -13,7 +13,7 @@ const educationFields = [
 
 export function EducationInput({ userEducation, setUserEducation, id }) {
     return (
-        <div className="eduInput">
+        <div >
             <DynamicFormSection
                 items={userEducation}
                 setItems={setUserEducation}

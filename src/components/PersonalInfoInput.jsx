@@ -1,37 +1,21 @@
-import { useState } from 'react';
-export default function InfoForm() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+// /components/EducationInput.js
+import { DynamicFormSection } from './DynamicFormSection';
 
-    const fullName = firstName + ' ' + lastName;
+// Configuración de los campos para la educación
+const personalInfoFields = [
+    { label: 'Name', name: 'personalName', type: 'text' },
+    { label: 'Surname', name: 'personalSurname', type: 'text' },
+];
 
-    function handleFirstNameChange(e) {
-        setFirstName(e.target.value);
-    }
-
-    function handleLastNameChange(e) {
-        setLastName(e.target.value);
-    }
-
+export  default function PersonalInfoInput({ userPersonalInfo, setUserPersonalInfo, id }) {
     return (
-        <>
-            <label>
-                First name:{' '}
-                <input
-                    value={firstName}
-                    onChange={handleFirstNameChange}
-                />
-            </label>
-            <label>
-                Last name:{' '}
-                <input
-                    value={lastName}
-                    onChange={handleLastNameChange}
-                />
-            </label>
-            <p>
-               <b>{fullName}</b>
-            </p>
-        </>
+        <div >
+            <DynamicFormSection
+                items={userPersonalInfo}
+                setItems={ setUserPersonalInfo}
+                id={id}
+                fields={personalInfoFields}
+            />
+        </div>
     );
 }

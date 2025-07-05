@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {use, useState} from 'react';
 
 import './App.css';
 import WorkInput from "./components/WorkInput.jsx";
@@ -7,6 +7,7 @@ import { EducationInput } from "./components/EducationInput.jsx";
 import PersonalInfoInput from "./components/PersonalInfoInput.jsx"
 import DisplayEducationInput from "./components/DisplayEducationInput.jsx";
 import NewEducationButton from "./components/NewEducationButton.jsx";
+import DisplayPersonalInfoInput from "./components/DisplayPersonalInfoInput.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -39,7 +40,13 @@ export default function App() {
             edulevel: '',
         }
     ]);
-
+    const [userPersonalInfo, setUserPersonalInfo] = useState([
+    {
+        id: 1,
+        personalName: '',
+        personalSurname: '',
+    }
+    ]);
     const [selectedId] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState(options[0]); // 👈
 
@@ -52,7 +59,7 @@ export default function App() {
             />
             <div className="mainDiv">
             {selectedCategory.name === 'Education' && (
-                <>
+                <div className="eduInput">
                     {userEducation.map(entry => (
                         <EducationInput
                             key={entry.id}
@@ -62,7 +69,7 @@ export default function App() {
                         />
                     ))}
                     <NewEducationButton userEducation={userEducation} setUserEducation={setUserEducation} />
-                </>
+                </div>
             )}
 
             {selectedCategory.name === 'Experience' && (
@@ -72,19 +79,25 @@ export default function App() {
                     id={selectedId}
                 />
             )}
-
+            <div className="personalInfoInput">
             {selectedCategory.name === 'Personal Info' && (
-                <PersonalInfoInput />
+                <PersonalInfoInput
+                    userPersonalInfo={userPersonalInfo}
+                    setUserPersonalInfo={setUserPersonalInfo}
+                    id={selectedId}
+                />
             )}
+            </div>
 
-            {selectedCategory.name === 'Leadership' && (
-                <p className="text-center">👑 Leadership Input Coming Soon...</p>
+                {selectedCategory.name === 'Leadership' && (
+                    <p className="text-center">👑 Leadership Input Coming Soon...</p>
             )}
 
             {selectedCategory.name === 'Skills and Interests' && (
                 <p className="text-center">🎯 Skills and Interests Coming Soon...</p>
             )}
             <DisplayEducationInput education={userEducation} />
+            <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
             </div>
         </div>
     );
