@@ -50,22 +50,19 @@
 }
 
 .inputDiv {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
 }
-.eduInput {
-  grid-area: 1/1
-}
-.eduDisplay {
-  grid-area: 2/2
-}
+
 .NewButton {
   height: 5rem;
 }
 .inputDiv {
   background-color: red;
 }
-
+.mainDiv {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 .eduInput {
   background-color: blue;
 }
@@ -77,3 +74,5 @@
 .experienceInput {
   background-color: yellow;
 }
+
+.d

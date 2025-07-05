@@ -79,59 +79,63 @@ export default function App() {
                 selectedOption={selectedCategory}
                 onSelect={setSelectedCategory}
             />
-            <div className="inputDiv">
-            {selectedCategory.name === 'Education' && (
-                <div className="eduInput">
-                    {userEducation.map(entry => (
-                        <EducationInput
-                            key={entry.id}
-                            userEducation={userEducation}
-                            setUserEducation={setUserEducation}
-                            id={entry.id}
-                        />
-                    ))}
-                    <NewEducationButton userEducation={userEducation} setUserEducation={setUserEducation} />
+            <div className="mainDiv">
+                <div className="inputDiv">
+                {selectedCategory.name === 'Education' && (
+                    <div className="eduInput">
+                        {userEducation.map(entry => (
+                            <EducationInput
+                                key={entry.id}
+                                userEducation={userEducation}
+                                setUserEducation={setUserEducation}
+                                id={entry.id}
+                            />
+                        ))}
+                        <NewEducationButton userEducation={userEducation} setUserEducation={setUserEducation} />
+                    </div>
+                )}
+                <div className="experienceInput">
+                {selectedCategory.name === 'Experience' && (
+                    <WorkInput
+                        userWork={userWork}
+                        setUserWork={setUserWork}
+                        id={selectedId}
+                    />
+                )}
                 </div>
-            )}
-            <div className="experienceInput">
-            {selectedCategory.name === 'Experience' && (
-                <WorkInput
-                    userWork={userWork}
-                    setUserWork={setUserWork}
-                    id={selectedId}
-                />
-            )}
-            </div>
-            <div className="personalInfoInput">
-            {selectedCategory.name === 'Personal Info' && (
-                <PersonalInfoInput
-                    userPersonalInfo={userPersonalInfo}
-                    setUserPersonalInfo={setUserPersonalInfo}
-                    id={selectedId}
-                />
-            )}
-            </div>
+                <div className="personalInfoInput">
+                {selectedCategory.name === 'Personal Info' && (
+                    <PersonalInfoInput
+                        userPersonalInfo={userPersonalInfo}
+                        setUserPersonalInfo={setUserPersonalInfo}
+                        id={selectedId}
+                    />
+                )}
+                </div>
 
-                {selectedCategory.name === 'Leadership' && (
-                    <LeadershipInput
-                    userLeadership={userLeadership}
-                    setUserLeadership={setUserLeadership}
-                    id={selectedId}/>
-            )}
+                    {selectedCategory.name === 'Leadership' && (
+                        <LeadershipInput
+                        userLeadership={userLeadership}
+                        setUserLeadership={setUserLeadership}
+                        id={selectedId}/>
+                )}
 
-            {selectedCategory.name === 'Skills and Interests' && (
-               <SkillsInput
-               userSkill={userSkills}
-               setUserSkill={setUserSkills}
-               id={selectedId}
-               />
-            )}
-            </div>
-            <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
-            <DisplayEducationInput education={userEducation} />
-            <DisplayWorkInput works={userWork} />
-            <DisplayLeadershipInput leadership={userLeadership} />
-            <DisplaySkillInput skills={userSkills} />
+                {selectedCategory.name === 'Skills and Interests' && (
+                   <SkillsInput
+                   userSkill={userSkills}
+                   setUserSkill={setUserSkills}
+                   id={selectedId}
+                   />
+                )}
+                </div>
+                <div className="displayDiv">
+                    <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
+                    <DisplayEducationInput education={userEducation} />
+                    <DisplayWorkInput works={userWork} />
+                    <DisplayLeadershipInput leadership={userLeadership} />
+                    <DisplaySkillInput skills={userSkills} />
+                </div>
+                </div>
             </div>
     );
 }
