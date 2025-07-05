@@ -8,8 +8,8 @@ export default function DisplayEducationInput({ education }) {
                         {/* Aquí pones lo que quieres mostrar, ejemplo el schoolName */}
                         <p>{education.startDate} </p>
                         <p>{education.endDate}</p>
-                        <p>{education.schoolName}</p>
-                        <p>{education.degree}</p>
+                        <p className="infoName">{education.schoolName}</p>
+                        <p className="infoTitle">{education.degree}</p>
                         <p>{education.location}</p>
                         <p>{education.edulevel}</p>
                     </li>

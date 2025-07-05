@@ -6,7 +6,7 @@ export default function DisplaySkillInput({ skills }) {
                 {skills.map(skills => (
                     <li key={skills.id}>
                         {/* Aquí pones lo que quieres mostrar, ejemplo el schoolName */}
-                        <p>{skills.skillName} </p>
+                        <p className='infoName'>{skills.skillName} </p>
                         <p>{skills.skillDescription}</p>
                     </li>
                 ))}

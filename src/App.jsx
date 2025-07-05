@@ -13,6 +13,7 @@ import LeadershipInput from "./components/LeadershipInput.jsx";
 import DisplayLeadershipInput from "./components/DisplayLeadershipInput.jsx";
 import SkillsInput from "./components/SkillsInput.jsx";
 import DisplaySkillInput from "./components/DisplaySkillInput.jsx";
+import NewWorkButton from "./components/NewWorkButton.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -74,11 +75,13 @@ export default function App() {
     ]);
     return (
         <div>
+            <header>
             <OptionsMenu
                 options={options}
                 selectedOption={selectedCategory}
                 onSelect={setSelectedCategory}
             />
+            </header>
             <div className="mainDiv">
                 <div className="inputDiv">
                 {selectedCategory.name === 'Education' && (
@@ -94,15 +97,19 @@ export default function App() {
                         <NewEducationButton userEducation={userEducation} setUserEducation={setUserEducation} />
                     </div>
                 )}
-                <div className="experienceInput">
-                {selectedCategory.name === 'Experience' && (
-                    <WorkInput
-                        userWork={userWork}
-                        setUserWork={setUserWork}
-                        id={selectedId}
-                    />
-                )}
-                </div>
+                    {selectedCategory.name === 'Experience' && (
+                        <div className="workInput">
+                            {userWork.map(entry => (
+                                <WorkInput
+                                key={entry.id}
+                                userWork={userWork}
+                                setUserWork={setUserWork}
+                                id={entry.id}
+                                />
+                            ))}
+                            <NewWorkButton userWork={userWork} setUserWork={setUserWork} />
+                        </div>
+                    )}
                 <div className="personalInfoInput">
                 {selectedCategory.name === 'Personal Info' && (
                     <PersonalInfoInput

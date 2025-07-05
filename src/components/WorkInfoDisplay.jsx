@@ -8,7 +8,8 @@ export default function DisplayWorkInput({ works }) {
                         {/* Aquí pones lo que quieres mostrar, ejemplo el schoolName */}
                         <p>{work.startDate} </p>
                         <p>{work.endDate}</p>
-                        <p>{work.title}</p>
+                        <p className="infoName">{work.companyName}</p>
+                        <p className="infoTitle">{work.title}</p>
                         <p>{work.location}</p>
                         <p>{work.description}</p>
                     </li>
