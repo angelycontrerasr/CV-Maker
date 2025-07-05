@@ -14,6 +14,7 @@ import DisplayLeadershipInput from "./components/DisplayLeadershipInput.jsx";
 import SkillsInput from "./components/SkillsInput.jsx";
 import DisplaySkillInput from "./components/DisplaySkillInput.jsx";
 import NewWorkButton from "./components/NewWorkButton.jsx";
+import NewLeadershipButton from "./components/NewLeadershipButton.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -84,6 +85,15 @@ export default function App() {
             </header>
             <div className="mainDiv">
                 <div className="inputDiv">
+                    <div className="personalInfoInput">
+                        {selectedCategory.name === 'Personal Info' && (
+                            <PersonalInfoInput
+                                userPersonalInfo={userPersonalInfo}
+                                setUserPersonalInfo={setUserPersonalInfo}
+                                id={selectedId}
+                            />
+                        )}
+                    </div>
                 {selectedCategory.name === 'Education' && (
                     <div className="eduInput">
                         {userEducation.map(entry => (
@@ -110,21 +120,17 @@ export default function App() {
                             <NewWorkButton userWork={userWork} setUserWork={setUserWork} />
                         </div>
                     )}
-                <div className="personalInfoInput">
-                {selectedCategory.name === 'Personal Info' && (
-                    <PersonalInfoInput
-                        userPersonalInfo={userPersonalInfo}
-                        setUserPersonalInfo={setUserPersonalInfo}
-                        id={selectedId}
-                    />
-                )}
-                </div>
-
                     {selectedCategory.name === 'Leadership' && (
-                        <LeadershipInput
-                        userLeadership={userLeadership}
-                        setUserLeadership={setUserLeadership}
-                        id={selectedId}/>
+                        <div className="LeadershipInput">
+                            {userLeadership.map(entry =>(
+                                <LeadershipInput
+                                key={entry.id}
+                                userLeadership={userLeadership}
+                                setUserLeadership={setUserLeadership}
+                                id={entry.id}/>
+                            ))}
+                            <NewLeadershipButton userLeadership={userLeadership} setUserLeadership={setUserLeadership}/>
+                        </div>
                 )}
 
                 {selectedCategory.name === 'Skills and Interests' && (
