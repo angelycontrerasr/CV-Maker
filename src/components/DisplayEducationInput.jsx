@@ -4,7 +4,7 @@ export default function DisplayEducationInput({ education }) {
             <h2>Education</h2>
             <ul>
                 {education.map(education => (
-                    <li className="eduDisplay" key={education.id}>
+                    <li key={education.id}>
                         {/* Aquí pones lo que quieres mostrar, ejemplo el schoolName */}
                         <p>{education.startDate} </p>
                         <p>{education.endDate}</p>
