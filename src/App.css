@@ -1,6 +1,7 @@
 
 #root {
   margin-left: 2.5rem;
+  padding-bottom: 3rem;
 }
 .logo {
   height: 6em;
@@ -59,18 +60,16 @@
   height: 5rem;
 }
 .inputDiv {
-  background-color: red;
+  background-color: black;
+  padding: 1rem;
 }
 .mainDiv {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-.eduInput {
-  background-color: blue;
-}
+
 
 .personalInfoInput {
-  background-color: green;
 }
 
 .experienceInput {
@@ -82,4 +81,15 @@
 }
 .infoTitle {
   font-size: 1.5rem;
+}
+
+label, input {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.displayDiv {
+  background-color: darkslategray;
+  padding: 1rem;
 }

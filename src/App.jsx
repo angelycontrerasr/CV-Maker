@@ -15,6 +15,7 @@ import SkillsInput from "./components/SkillsInput.jsx";
 import DisplaySkillInput from "./components/DisplaySkillInput.jsx";
 import NewWorkButton from "./components/NewWorkButton.jsx";
 import NewLeadershipButton from "./components/NewLeadershipButton.jsx";
+import NewSkillButton from "./components/NewSkillsButton.jsx";
 const options = [
     { id: 0, name: 'Personal Info' },
     { id: 1, name: 'Education' },
@@ -54,7 +55,7 @@ export default function App() {
         personalSurname: '',
     }
     ]);
-    const [userSkills, setUserSkills] = useState([
+    const [userSkill, setUserSkill] = useState([
         {
             id: 1,
             skillName: '',
@@ -134,21 +135,26 @@ export default function App() {
                 )}
 
                 {selectedCategory.name === 'Skills and Interests' && (
-                   <SkillsInput
-                   userSkill={userSkills}
-                   setUserSkill={setUserSkills}
-                   id={selectedId}
-                   />
+                    <div className="SkillsInput">
+                        {userSkill.map(entry => (
+                            <SkillsInput
+                                key={entry.id}
+                                userSkill={userSkill}
+                                setUserSkill={setUserSkill}
+                                id={entry.id}/>
+                        ))}
+                        <NewSkillButton userSkill={userSkill} setUserSkill={setUserSkill}/>
+                    </div>
                 )}
                 </div>
                 <div className="displayDiv">
-                    <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]} />
-                    <DisplayEducationInput education={userEducation} />
-                    <DisplayWorkInput works={userWork} />
-                    <DisplayLeadershipInput leadership={userLeadership} />
-                    <DisplaySkillInput skills={userSkills} />
-                </div>
+                    <DisplayPersonalInfoInput personalInfo={userPersonalInfo[0]}/>
+                    <DisplayEducationInput education={userEducation}/>
+                    <DisplayWorkInput works={userWork}/>
+                    <DisplayLeadershipInput leadership={userLeadership}/>
+                    <DisplaySkillInput skills={userSkill}/>
                 </div>
             </div>
+        </div>
     );
 }
